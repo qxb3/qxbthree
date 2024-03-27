@@ -28,7 +28,7 @@ document.addEventListener('keydown', async (event) => {
   if (event.key === 'Enter')              return await runCommand(event)
   if (event.ctrlKey && event.key === 'c') return cancelCommand(event)
   if (event.key === 'Backspace')          return backspace(event)
-  if (event.key === ' ')                  return prompt.innerHTML += '&nbsp;'
+  if (event.key === ' ')                  return space()
   if (event.key === 'ArrowUp')            return historyUp(event)
   if (event.key === 'ArrowDown')          return historyDown(event)
 
@@ -78,6 +78,10 @@ function cancelCommand() {
 
 function backspace() {
   prompt.innerText = prompt.innerText.slice(0, -1)
+}
+
+function space() {
+  prompt.innerHTML += '&nbsp;'
 }
 
 function historyUp(event) {
