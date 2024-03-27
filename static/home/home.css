@@ -1,0 +1,109 @@
+body[theme="light"] {
+  /* Base Colors */
+  --bg: #fbf1c7;
+  --fg: #3c3836;
+
+  /* Color Variations */
+  --bg0: #fbf1c7;
+  --bg1: #ebdbb2;
+  --bg2: #d5c4a1;
+  --bg3: #bdae93;
+  --bg4: #a89984;
+  --fg0: #3c3836;
+  --fg1: #504945;
+  --fg2: #665c54;
+  --fg3: #7c6f64;
+  --fg4: #928374;
+  --red: #cc241d;
+  --green: #98971a;
+  --yellow: #d79921;
+  --blue: #458588;
+  --purple: #b16286;
+  --aqua: #689d6a;
+  --orange: #d65d0e;
+}
+
+body[theme="dark"] {
+  /* Base Colors */
+  --bg: #282828;
+  --fg: #ebdbb2;
+
+  /* Color Variations */
+  --bg0: #282828;
+  --bg1: #3c3836;
+  --bg2: #504945;
+  --bg3: #665c54;
+  --bg4: #7c6f64;
+  --fg0: #ebdbb2;
+  --fg1: #d5c4a1;
+  --fg2: #bdae93;
+  --fg3: #a89984;
+  --fg4: #928374;
+  --red: #cc241d;
+  --green: #98971a;
+  --yellow: #d79921;
+  --blue: #458588;
+  --purple: #b16286;
+  --aqua: #689d6a;
+  --orange: #d65d0e;
+}
+
+* { font-size: 16px; }
+
+body {
+  background-color: var(--bg);
+  font-family: 'TypoPRO Iosevka Term';
+  color: var(--fg);
+}
+
+::selection {
+  background-color: var(--green);
+  color: var(--bg)
+}
+
+main {
+  padding: 1rem;
+}
+
+/* Base Colors */
+.bg { background-color: var(--bg); }
+.fg { color: var(--fg); }
+
+/* Color Variations */
+.bg0 { background-color: var(--bg0); }
+.bg1 { background-color: var(--bg1); }
+.bg2 { background-color: var(--bg2); }
+.bg3 { background-color: var(--bg3); }
+.bg4 { background-color: var(--bg4); }
+.fg0 { color: var(--fg0); }
+.fg1 { color: var(--fg1); }
+.fg2 { color: var(--fg2); }
+.fg3 { color: var(--fg3); }
+.fg4 { color: var(--fg4); }
+
+/* Colors */
+.red { color: var(--red); }
+.green { color: var(--green); }
+.yellow { color: var(--yellow); }
+.blue { color: var(--blue); }
+.purple { color: var(--purple); }
+.aqua { color: var(--aqua); }
+.orange { color: var(--orange); }
+
+#prompt-line {
+  display: flex;
+  align-items: center;
+}
+
+#prompt-line #indicator {
+  background-color: var(--green);
+  width: 6px;
+  height: 18px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
