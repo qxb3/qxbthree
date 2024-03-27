@@ -28,6 +28,7 @@ document.addEventListener('keydown', async (event) => {
   if (event.key === 'Enter')              return await runCommand(event)
   if (event.ctrlKey && event.key === 'c') return cancelCommand(event)
   if (event.key === 'Backspace')          return backspace(event)
+  if (event.key === ' ')                  return prompt.innerHTML += '&nbsp;'
   if (event.key === 'ArrowUp')            return historyUp(event)
   if (event.key === 'ArrowDown')          return historyDown(event)
 
@@ -40,10 +41,10 @@ async function runCommand() {
     dedent,
     history,
     prompt,
-    args: prompt.innerText.split(' ').slice(1).join(' ')
+    args: prompt.innerHTML.replaceAll('&nbsp;', '.').split('.').slice(1).join(' ')
   }
 
-  const command = commands[prompt.innerText.split(' ')[0]]
+  const command = commands[prompt.innerHTML.replaceAll('&nbsp;', '.').split('.')[0]]
   if (command) await command.fn(cfg)
   else {
     if (prompt.innerText.length <= 0)
