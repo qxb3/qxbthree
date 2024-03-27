@@ -1,3 +1,4 @@
+import figlet from '/static/figlet.js'
 import { uptime, neofetch, createTree } from '/static/home/utils.js'
 
 const COMMANDS = {
@@ -59,9 +60,19 @@ const COMMANDS = {
     }
   },
   'echo': {
-    description: 'print given arguments',
+    description: 'print given arguments.',
     fn: ({ stdout, args }) => {
       stdout(args)
+    }
+  },
+  'figlet': {
+    description: 'generate ascii art/banners.',
+    fn: ({ stdout, args }) => {
+      figlet(args, function(err, data) {
+        if (err) return stdout('Error: Something went wrong...')
+
+        stdout(data ?? '')
+      })
     }
   },
   'neofetch': {
