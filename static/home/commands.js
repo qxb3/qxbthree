@@ -1,6 +1,9 @@
 import figlet from '/static/figlet.js'
 import { uptime, neofetch, createTree } from '/static/home/utils.js'
 
+// Weird hack to Load fonts on startup
+figlet()
+
 const COMMANDS = {
   'help': {
     description: 'show help menu.',
