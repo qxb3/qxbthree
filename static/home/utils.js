@@ -14,6 +14,30 @@ export function stdout({ history, prompt }, out) {
   `
 }
 
+export function createTree(dir) {
+  let tree = ''
+
+  function nest(node, level = 0, isLast = false, prefix = '') {
+    const currentPrefix = prefix + (level === 0 ? '└── ' : (isLast ? '└── ' : '├── '));
+    const nextPrefix = prefix + (level === 0 ? '    ' : (isLast ? '    ' : '│   '));
+
+    tree += `${currentPrefix}${node.name}\n`
+
+    if (node.children && node.children.length > 0) {
+      for (let i = 0; i < node.children.length - 1; i++) {
+        nest(node.children[i], level + 1, false, nextPrefix);
+      }
+      if (node.children.length >= 1) {
+        nest(node.children[node.children.length - 1], level + 1, true, nextPrefix);
+      }
+    }
+  }
+
+  nest(dir)
+
+  return tree
+}
+
 export function scrollDown() {
   document.documentElement.scrollTop = document.documentElement.scrollHeight
 }

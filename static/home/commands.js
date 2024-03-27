@@ -1,4 +1,4 @@
-import { uptime, neofetch } from '/static/home/utils.js'
+import { uptime, neofetch, createTree } from '/static/home/utils.js'
 
 const COMMANDS = {
   'help': {
@@ -29,92 +29,24 @@ const COMMANDS = {
   },
   'tree': {
     description: 'list directories in a tree-like format.',
-    fn: ({ stdout }) => {
-      function createTree(dir) {
-        let tree = ''
-
-        function nest(node, level = 0, isLast = false, prefix = '') {
-          const currentPrefix = prefix + (level === 0 ? '└── ' : (isLast ? '└── ' : '├── '));
-          const nextPrefix = prefix + (level === 0 ? '    ' : (isLast ? '    ' : '│   '));
-
-          tree += `${currentPrefix}${node.name}\n`
-
-          if (node.children && node.children.length > 0) {
-            for (let i = 0; i < node.children.length - 1; i++) {
-              nest(node.children[i], level + 1, false, nextPrefix);
-            }
-            if (node.children.length >= 1) {
-              nest(node.children[node.children.length - 1], level + 1, true, nextPrefix);
-            }
-          }
-        }
-
-        nest(dir)
-
-        return tree
-      }
+    fn: async ({ stdout }) => {
+      const res = await fetch('/api/pinned')
+      const repositories = await res.json()
 
       let tree = createTree({
         name: '<span class="blue">projects</span>',
-        children: [
-          {
-            name: '<span class="blue">gruvbox.hypr</span>',
-            children: [
-              { name: 'description: Gruvbox in hyprland' },
-              { name: 'stars: 139' },
-              { name: 'forks: 7' },
-              { name: 'link: https://github.com/qxb3/gruvbox.hypr' }
-            ]
-          },
-          {
-            name: '<span class="blue">termux-bot</span>',
-            children: [
-              { name: 'description: A simple discord bot that can execute commands to your termux.' },
-              { name: 'stars: 16' },
-              { name: 'forks: 2' },
-              { name: 'link: https://github.com/qxb3/termux-bot' }
-            ]
-          },
-          {
-            name: '<span class="blue">eiv</span>',
-            children: [
-              { name: 'description: A simple script to get eruda working with via browser' },
-              { name: 'stars: 7' },
-              { name: 'forks: 0' },
-              { name: 'link: https://github.com/qxb3/eiv' }
-            ]
-          },
-          {
-            name: '<span class="blue">TopDownShooter</span>',
-            children: [
-              { name: 'description: A TopDownShooter made using libgdx and Ashley' },
-              { name: 'stars: 4' },
-              { name: 'forks: 0' },
-              { name: 'link: https://github.com/qxb3/TopDownShooter' }
-            ]
-          },
-          {
-            name: '<span class="blue">mirage-helper</span>',
-            children: [
-              { name: 'description: 🤖 A simple discord bot for mirage realms' },
-              { name: 'stars: 2' },
-              { name: 'forks: 0' },
-              { name: 'link: https://github.com/qxb3/mirage-helper' }
-            ]
-          },
-          {
-            name: '<span class="blue">preon</span>',
-            children: [
-              { name: 'description: A free and open source url shortener' },
-              { name: 'stars: 1' },
-              { name: 'forks: 0' },
-              { name: 'link: https://github.com/qxb3/preon' }
-            ]
-          },
-        ]
+        children: repositories.map(({ repo, description, stars, forks, link }) => ({
+          name: `<span class="blue">${repo}</span>`,
+          children: [
+            { name: `description: ${description}` },
+            { name: `stars: ${stars}` },
+            { name: `forks: ${forks}` },
+            { name: `link: ${link}` }
+          ]
+        }))
       })
 
-      tree += `\n7 directories, 28 files`
+      tree += `\n${repositories.length + 1} directories, ${repositories.length * 4} files`
 
       stdout(tree)
     }

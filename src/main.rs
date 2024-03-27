@@ -27,7 +27,7 @@ async fn main() {
         .route("/", get(routes::home::handler))
         .with_state(templates);
 
-    let listener = TcpListener::bind("127.0.0.1:3000").await.unwrap();
+    let listener = TcpListener::bind("127.0.0.1:8080").await.unwrap();
     tracing::debug!("Listening on {}", listener.local_addr().unwrap());
 
     axum::serve(listener, router).await.unwrap();
