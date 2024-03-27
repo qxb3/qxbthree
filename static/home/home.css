@@ -99,11 +99,11 @@ main {
   background-color: var(--green);
   width: 6px;
   height: 18px;
-  animation: blink 1s infinite;
+  /* animation: blink 1s infinite; */
 }
 
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
+/* @keyframes blink { */
+/*   50% { */
+/*     opacity: 0; */
+/*   } */
+/* } */
