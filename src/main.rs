@@ -22,6 +22,7 @@ async fn main() {
             "/api",
             Router::new()
                 .route("/uptime", get(api::uptime::handler))
+                .route("/pinned", get(api::pinned::handler))
         )
         .route("/", get(routes::home::handler))
         .with_state(templates);
