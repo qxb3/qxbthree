@@ -1,4 +1,4 @@
-import dedent from '/static/dedent.js'
+import dedent from '/static/libs/dedent.js'
 import commands from '/static/home/commands.js'
 import { neofetch, stdout, scrollDown } from '/static/home/utils.js'
 

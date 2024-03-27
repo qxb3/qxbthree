@@ -1,4 +1,4 @@
-import figlet from '/static/figlet.js'
+import figlet from '/static/libs/figlet.js'
 import { uptime, neofetch, createTree } from '/static/home/utils.js'
 
 // Weird hack to Load fonts on startup
