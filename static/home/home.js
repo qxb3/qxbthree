@@ -25,11 +25,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 document.addEventListener('keydown', async (event) => {
   scrollDown()
 
-  if (event.key === 'Enter')              return await runCommand()
-  if (event.ctrlKey && event.key === 'c') return cancelCommand()
-  if (event.key === 'Backspace')          return backspace()
-  if (event.key === 'ArrowUp')            return historyUp()
-  if (event.key === 'ArrowDown')          return historyDown()
+  if (event.key === 'Enter')              return await runCommand(event)
+  if (event.ctrlKey && event.key === 'c') return cancelCommand(event)
+  if (event.key === 'Backspace')          return backspace(event)
+  if (event.key === 'ArrowUp')            return historyUp(event)
+  if (event.key === 'ArrowDown')          return historyDown(event)
 
   if (!ignore.includes(event.key)) prompt.innerHTML += event.key
 })
@@ -52,11 +52,10 @@ async function runCommand() {
     cfg.stdout(`Unknown Command: ${prompt.innerText}`)
   }
 
-  if (commandHistory[commandHistory.length - 1] !== prompt.innerText) {
+  if (commandHistory[commandHistory.length - 1] !== prompt.innerText)
     commandHistory.push(prompt.innerText)
-    commandHistoryIndex += 1
-  }
 
+  commandHistoryIndex = commandHistory.length
   prompt.innerText = ''
   scrollDown()
 }
@@ -80,13 +79,15 @@ function backspace() {
   prompt.innerText = prompt.innerText.slice(0, -1)
 }
 
-function historyUp() {
+function historyUp(event) {
+  event.preventDefault()
   if (commandHistoryIndex <= 0) return
 
   prompt.innerText = commandHistory[--commandHistoryIndex]
 }
 
-function historyDown() {
+function historyDown(event) {
+  event.preventDefault()
   if (commandHistoryIndex >= commandHistory.length - 1) return
 
   prompt.innerText = commandHistory[++commandHistoryIndex]
