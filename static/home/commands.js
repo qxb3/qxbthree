@@ -39,8 +39,8 @@ const COMMANDS = {
 
       let tree = createTree({
         name: '<span class="blue">projects</span>',
-        children: repositories.map(({ repo, description, stars, forks, link }) => ({
-          name: `<span class="blue">${repo}</span>`,
+        children: repositories.map(({ name, description, stars, forks, link }) => ({
+          name: `<span class="blue">${name}</span>`,
           children: [
             { name: `description: ${description}` },
             { name: `stars: ${stars}` },
