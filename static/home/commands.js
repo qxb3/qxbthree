@@ -26,7 +26,7 @@ const COMMANDS = {
         who am i?
 
         i am qxb3! my real name is justin,
-        im currently 18 yrs old living in the terrible place called philippines,
+        im currently 18 yrs old living in the place called philippines,
         i have no life and i just code for fun. :)
       `)
     }
