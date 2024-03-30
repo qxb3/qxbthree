@@ -57,16 +57,16 @@ pub async fn handler() -> impl IntoResponse {
                     pinned_repositories.push(PinnedRepository::new(name, description, link, stars, forks));
                 }
 
-            return Response::builder()
+            Response::builder()
                 .status(200)
                 .header("Content-Type", "application/json")
                 .body(Body::from(serde_json::to_string(&pinned_repositories).unwrap()))
                 .unwrap()
         },
-        Err(err) => return Response::builder()
+        Err(err) => Response::builder()
             .status(500)
             .header("Content-Type", "application/json")
-            .body(Body::from(format!(r#"{{ "status": 500, "message": "{}", "err": "{}" }}"#, StatusCode::INTERNAL_SERVER_ERROR, err.to_string())))
+            .body(Body::from(format!(r#"{{ "status": 500, "message": "{}", "err": "{}" }}"#, StatusCode::INTERNAL_SERVER_ERROR, err)))
             .unwrap()
     }
 }
