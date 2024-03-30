@@ -56,6 +56,10 @@ body {
   color: var(--fg);
 }
 
+a {
+  color: var(--fg);
+}
+
 ::selection {
   background-color: var(--green);
   color: var(--bg)

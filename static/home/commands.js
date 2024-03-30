@@ -31,6 +31,16 @@ const COMMANDS = {
       `)
     }
   },
+  'contacts': {
+    description: 'get my contacts',
+    fn: ({ stdout, dedent }) => {
+      stdout(dedent`
+        email: <a href="qxbthree@gmail.com">qxbthree@gmail.com</a>
+        github: <a href="qxbthree@gmail.com">qxbthree@gmail.com</a>
+        facebook: <a href="https://www.facebook.com/qxbthree">https://www.facebook.com/qxbthree</a>
+      `)
+    }
+  },
   'tree': {
     description: 'list directories in a tree-like format.',
     fn: async ({ stdoutProcess }) => {
