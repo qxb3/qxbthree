@@ -134,6 +134,12 @@ const COMMANDS = {
       stdout(up)
     }
   },
+  'why-is-rust-highlighted-in-stack-command': {
+    description: 'why?',
+    fn: ({ stdout }) => {
+      stdout('yes.')
+    }
+  },
   'clear': {
     description: 'clear history.',
     fn: ({ history }) => {
