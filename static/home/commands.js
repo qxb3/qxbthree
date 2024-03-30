@@ -26,8 +26,34 @@ const COMMANDS = {
         who am i?
 
         i am qxb3! my real name is justin,
-        im currently 18 yrs old living in the place called philippines,
+        im currently 18 yrs old living in the place called philippines.
         i have no life and i just code for fun. :)
+      `)
+    }
+  },
+  'stack': {
+    description: 'some stuff i know',
+    fn: ({ stdout, dedent }) => {
+      stdout(dedent`
+        <strong>programming languages:</strong>
+        - javascript / typescript
+        - java
+        - python
+        - bash
+        - c/c++
+        <strong>- rust</strong>
+
+        <strong>web:</strong>
+        - nodejs
+        - react/nextjs
+        - sveltejs
+        - html/css
+
+        <strong>tools/utils:</strong>
+        - git
+        - linux (arch btw)
+        - docker
+        - vim/neovim
       `)
     }
   },
