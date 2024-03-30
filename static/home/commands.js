@@ -113,12 +113,12 @@ const COMMANDS = {
   'theme': {
     description: 'toggle terminal theme to light/dark',
     fn: ({ stdout }) => {
-      const theme = document.body.getAttribute('theme')
+      const theme = document.body.getAttribute('theme') === 'light' ? 'dark' : 'light'
 
-      if (theme === 'light') document.body.setAttribute('theme', 'dark')
-      if (theme === 'dark') document.body.setAttribute('theme', 'light')
+      document.body.setAttribute('theme', theme)
+      localStorage.setItem('theme', theme)
 
-      stdout(`Changed theme to ${theme === 'light' ? 'dark' : 'light'}`)
+      stdout(`Changed theme to ${theme}`)
     }
   },
   'echo': {

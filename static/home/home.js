@@ -20,6 +20,9 @@ let commandHistory = []
 let commandHistoryIndex = 0
 
 document.addEventListener('DOMContentLoaded', async () => {
+  const theme = localStorage.getItem('theme') ?? 'light'
+  document.body.setAttribute('theme', theme)
+
   history.innerHTML += await neofetch()
 })
 
