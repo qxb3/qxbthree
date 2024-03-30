@@ -21,6 +21,7 @@ body[theme="light"] {
   --purple: #b16286;
   --aqua: #689d6a;
   --orange: #d65d0e;
+  --grey: #928374;
 }
 
 body[theme="dark"] {
@@ -46,6 +47,7 @@ body[theme="dark"] {
   --purple: #b16286;
   --aqua: #689d6a;
   --orange: #d65d0e;
+  --grey: #928374;
 }
 
 * { font-size: 16px; }
@@ -93,6 +95,16 @@ main {
 .purple { color: var(--purple); }
 .aqua { color: var(--aqua); }
 .orange { color: var(--orange); }
+
+/* neofetch */
+.colors-bg { background-color: var(--bg); }
+.colors-red { background-color: var(--red); }
+.colors-green { background-color: var(--green); }
+.colors-yellow { background-color: var(--yellow); }
+.colors-blue { background-color: var(--blue); }
+.colors-purple { background-color: var(--purple); }
+.colors-aqua { background-color: var(--aqua); }
+.colors-grey { background-color: var(--grey); }
 
 #prompt-line {
   display: flex;

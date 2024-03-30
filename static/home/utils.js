@@ -68,6 +68,11 @@ export async function uptime() {
 export async function neofetch() {
   const up = await uptime()
 
+  const colors = [
+    'bg', 'red', 'green', 'yellow',
+    'blue', 'purple', 'aqua', 'grey'
+  ]
+
   const out = dedent`
     <pre>
          _nnnn_
@@ -84,7 +89,7 @@ export async function neofetch() {
  __| ".       |\dS"qML                    <span class="green">Terminal:</span> kitty
  |    ".      | "' \Zq                    <span class="green">Editor:</span> neovim
 _)     \.___.,|     .'
-\____   )MMMMMM|   .'
+\____   )MMMMMM|   .'                     ${colors.map(color => `<span class="colors-${color}">   </span>`).join('')}
      \`-'       \`--' hjm
     </pre>`
 
