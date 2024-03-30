@@ -21,13 +21,13 @@ export async function stdoutProcess({ history, prompt, path }, process) {
 
   const out = await process()
 
-  path.style.display = 'initial'
-
   history.innerHTML += `
     <div>
       <pre>${out}</pre>
     </div>
   `
+
+  path.style.display = 'initial'
 }
 
 export function createTree(dir) {
