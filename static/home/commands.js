@@ -61,9 +61,9 @@ const COMMANDS = {
     description: 'get my contacts',
     fn: ({ stdout, dedent }) => {
       stdout(dedent`
-        email: <a href="qxbthree@gmail.com">qxbthree@gmail.com</a>
-        github: <a href="qxbthree@gmail.com">qxbthree@gmail.com</a>
-        facebook: <a href="https://www.facebook.com/qxbthree">https://www.facebook.com/qxbthree</a>
+        email: <a href="mailto:qxbthree@gmail.com" target="_blank">qxbthree@gmail.com</a>
+        github: <a href="https://github.com/qxb3" target="_blank">https://github.com/qxb3</a>
+        facebook: <a href="https://www.facebook.com/qxbthree" target="_blank">https://www.facebook.com/qxbthree</a>
       `)
     }
   },
