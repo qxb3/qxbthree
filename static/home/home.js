@@ -1,8 +1,9 @@
 import dedent from '/static/dedent.js'
 import commands from '/static/home/commands.js'
-import { neofetch, stdout, scrollDown } from '/static/home/utils.js'
+import { neofetch, stdout, stdoutProcess, scrollDown } from '/static/home/utils.js'
 
 const history =  document.getElementById('history')
+const path =  document.getElementById('path')
 const prompt =  document.getElementById('prompt')
 
 const ignore = [
@@ -39,6 +40,7 @@ document.addEventListener('keydown', async (event) => {
 async function runCommand() {
   const cfg = {
     stdout: (out) => stdout({ history, prompt }, out),
+    stdoutProcess: (process) => stdoutProcess({ history, prompt, path }, process),
     dedent,
     history,
     prompt,

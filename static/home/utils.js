@@ -14,6 +14,22 @@ export function stdout({ history, prompt }, out) {
   `
 }
 
+export async function stdoutProcess({ history, prompt, path }, process) {
+  stdout({ history, prompt }, '')
+
+  path.style.display = 'none'
+
+  const out = await process()
+
+  path.style.display = 'initial'
+
+  history.innerHTML += `
+    <div>
+      <pre>${out}</pre>
+    </div>
+  `
+}
+
 export function createTree(dir) {
   let tree = ''
 

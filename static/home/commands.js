@@ -33,26 +33,28 @@ const COMMANDS = {
   },
   'tree': {
     description: 'list directories in a tree-like format.',
-    fn: async ({ stdout }) => {
-      const res = await fetch('/api/pinned')
-      const repositories = await res.json()
+    fn: async ({ stdoutProcess }) => {
+      stdoutProcess(async () => {
+        const res = await fetch('/api/pinned')
+        const repositories = await res.json()
 
-      let tree = createTree({
-        name: '<span class="blue">projects</span>',
-        children: repositories.map(({ name, description, stars, forks, link }) => ({
-          name: `<span class="blue">${name}</span>`,
-          children: [
-            { name: `description: ${description}` },
-            { name: `stars: ${stars}` },
-            { name: `forks: ${forks}` },
-            { name: `link: ${link}` }
-          ]
-        }))
+        let tree = createTree({
+          name: '<span class="blue">projects</span>',
+          children: repositories.map(({ name, description, stars, forks, link }) => ({
+            name: `<span class="blue">${name}</span>`,
+            children: [
+              { name: `description: ${description}` },
+              { name: `stars: ${stars}` },
+              { name: `forks: ${forks}` },
+              { name: `link: ${link}` }
+            ]
+          }))
+        })
+
+        tree += `\n${repositories.length + 1} directories, ${repositories.length * 4} files`
+
+        return tree
       })
-
-      tree += `\n${repositories.length + 1} directories, ${repositories.length * 4} files`
-
-      stdout(tree)
     }
   },
   'uptime': {
