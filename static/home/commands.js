@@ -42,7 +42,7 @@ const COMMANDS = {
     }
   },
   'tree': {
-    description: 'list directories in a tree-like format.',
+    description: 'list directories in a tree-like format. (projects)',
     fn: async ({ stdoutProcess }) => {
       stdoutProcess(async () => {
         const res = await fetch('/api/pinned')
