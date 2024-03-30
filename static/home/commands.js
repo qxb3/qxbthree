@@ -63,6 +63,7 @@ const COMMANDS = {
       stdout(dedent`
         email: <a href="mailto:qxbthree@gmail.com" target="_blank">qxbthree@gmail.com</a>
         github: <a href="https://github.com/qxb3" target="_blank">https://github.com/qxb3</a>
+        discord: <a href="https://discord.com/users/591150858830479381" target="_blank">https://discord.com/users/591150858830479381</a>
         facebook: <a href="https://www.facebook.com/qxbthree" target="_blank">https://www.facebook.com/qxbthree</a>
       `)
     }
